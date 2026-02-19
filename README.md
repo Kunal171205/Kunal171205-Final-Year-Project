@@ -10,6 +10,15 @@
 - **Capability listings**
 - **Industry networking**
 
+### 🔄 B2B Trade Marketplace
+The B2B Trade section enables industries to buy, sell, and exchange industrial products and services within the ecosystem.
+
+**Key Capabilities:**
+- Post product/service listings
+- Discover suppliers & buyers
+- Industrial trade connections
+- B2B collaboration opportunities
+
 ### 💼 Jobs Portal
 A dedicated industrial hiring system connecting employers and skilled professionals.
 
@@ -23,14 +32,6 @@ A dedicated industrial hiring system connecting employers and skilled profession
 - View company profiles
 - Apply to positions
 
-### 🔄 B2B Trade Marketplace
-The B2B Trade section enables industries to buy, sell, and exchange industrial products and services within the ecosystem.
-
-**Key Capabilities:**
-- Post product/service listings
-- Discover suppliers & buyers
-- Industrial trade connections
-- B2B collaboration opportunities
 
 > This transforms IndusTech into a digital industrial marketplace, not just a directory.
 
