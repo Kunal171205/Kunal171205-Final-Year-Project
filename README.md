@@ -1,83 +1,65 @@
-IndusTech — An Industrial Ecosystem 🌐🏭
+# IndusTech — An Industrial Ecosystem 🌐🏭
 
-IndusTech is a web-based industrial ecosystem platform that connects industries, suppliers, service providers, and job seekers in a unified digital environment. The platform enables companies to showcase capabilities, trade industrial goods/services, recruit talent, and collaborate within a centralized industrial network.
+**IndusTech** is a web-based industrial ecosystem platform that connects industries, suppliers, service providers, and job seekers in a unified digital environment. The platform enables companies to showcase capabilities, trade industrial goods/services, recruit talent, and collaborate within a centralized industrial network.
 
-🚀 Core Modules
-🏭 Industry Ecosystem
+## 🚀 Core Modules
 
-Company & industry profiles
+### 🏭 Industry Ecosystem
+- **Company & industry profiles**
+- **Industrial services showcase**
+- **Capability listings**
+- **Industry networking**
 
-Industrial services showcase
-
-Capability listings
-
-Industry networking
-
-💼 Jobs Portal
-
+### 💼 Jobs Portal
 A dedicated industrial hiring system connecting employers and skilled professionals.
 
-Industries can:
+**Industries can:**
+- Post job openings
+- Manage listings
+- View applicants
 
-Post job openings
+**Job seekers can:**
+- Browse industrial jobs
+- View company profiles
+- Apply to positions
 
-Manage listings
-
-View applicants
-
-Job seekers can:
-
-Browse industrial jobs
-
-View company profiles
-
-Apply to positions
-
-🔄 B2B Trade Marketplace
-
+### 🔄 B2B Trade Marketplace
 The B2B Trade section enables industries to buy, sell, and exchange industrial products and services within the ecosystem.
 
-Key Capabilities
+**Key Capabilities:**
+- Post product/service listings
+- Discover suppliers & buyers
+- Industrial trade connections
+- B2B collaboration opportunities
 
-Post product/service listings
+> This transforms IndusTech into a digital industrial marketplace, not just a directory.
 
-Discover suppliers & buyers
+### 🤝 Industrial Collaboration
+- Partner discovery
+- Supplier connections
+- Service collaboration
+- Industrial networking
 
-Industrial trade connections
+---
 
-B2B collaboration opportunities
+## 🛠️ Tech Stack
 
-This transforms IndusTech into a digital industrial marketplace, not just a directory.
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-🤝 Industrial Collaboration
+### Backend
+- Python (Flask)
 
-Partner discovery
+### Database
+- SQL database with ORM models
 
-Supplier connections
+---
 
-Service collaboration
+## 📂 Project Structure
 
-Industrial networking
-
-🛠️ Tech Stack
-
-Frontend
-
-HTML5
-
-CSS3
-
-JavaScript
-
-Backend
-
-Python (Flask)
-
-Database
-
-SQL database with ORM models
-
-📂 Project Structure
+```bash
 IndusTech---An-Industrial-Ecosystem
 │
 ├── static/            # CSS, JS, images
@@ -89,57 +71,71 @@ IndusTech---An-Industrial-Ecosystem
 ├── models.py          # Users, Industry, Jobs, Trade models
 ├── Flask.txt          # Dependencies
 └── .gitignore
+```
 
-⚙️ Installation & Setup
-git clone https://github.com/Kunal171205/IndusTech---An-Industrial-Ecosystem.git
-cd IndusTech---An-Industrial-Ecosystem
+---
 
-python -m venv venv
-venv\Scripts\activate
+## ⚙️ Installation & Setup
 
-pip install -r Flask.txt
-python app.py
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Kunal171205/IndusTech---An-Industrial-Ecosystem.git
+   cd IndusTech---An-Industrial-Ecosystem
+   ```
 
+2. **Create and activate virtual environment**
+   ```bash
+   python -m venv venv
+   # On Windows
+   venv\Scripts\activate
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
 
-Open in browser:
+3. **Install dependencies**
+   ```bash
+   pip install -r Flask.txt
+   ```
 
-http://127.0.0.1:5000
+4. **Run the application**
+   ```bash
+   python app.py
+   ```
 
-🎯 Project Objective
+5. **Access the platform**
+   Open your browser and navigate to:
+   [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-IndusTech aims to create a complete digital industrial ecosystem integrating:
+---
 
-Industrial networking
+## 🎯 Project Objective
 
-B2B trade & supplier discovery
+**IndusTech** aims to create a complete digital industrial ecosystem integrating:
+- Industrial networking
+- B2B trade & supplier discovery
+- Workforce recruitment
+- Industry collaboration
 
-Workforce recruitment
+...into a single unified platform.
 
-Industry collaboration
+## 🔮 Future Enhancements
 
-into a single unified platform.
+- [ ] AI-based supplier & job recommendations
+- [ ] Smart product matching
+- [ ] Resume & quotation system
+- [ ] Industrial messaging & negotiation
+- [ ] Analytics dashboard
+- [ ] Cloud deployment
 
-🔮 Future Enhancements
+---
 
-AI-based supplier & job recommendations
+## 👨💻 Author
 
-Smart product matching
+**Kunal Biradar**
+*Final Year Project — IndusTech Industrial Ecosystem*
 
-Resume & quotation system
+GitHub: [https://github.com/Kunal171205](https://github.com/Kunal171205)
 
-Industrial messaging & negotiation
-
-Analytics dashboard
-
-Cloud deployment
-
-👨‍💻 Author
-
-Kunal Biradar
-Final Year Project — IndusTech Industrial Ecosystem
-
-GitHub: https://github.com/Kunal171205
-
-📜 License
+## 📜 License
 
 Developed for academic and educational purposes.
