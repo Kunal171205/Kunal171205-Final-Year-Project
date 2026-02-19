@@ -2,6 +2,16 @@
 
 **IndusTech** is a web-based industrial ecosystem platform that connects industries, suppliers, service providers, and job seekers in a unified digital environment. The platform enables companies to showcase capabilities, trade industrial goods/services, recruit talent, and collaborate within a centralized industrial network.
 
+## 🎯 Project Objective
+
+**IndusTech** aims to create a complete digital industrial ecosystem integrating:
+- Industrial networking
+- B2B trade & supplier discovery
+- Workforce recruitment
+- Industry collaboration
+
+...into a single unified platform.
+
 ## 🚀 Core Modules
 
 ### 🏭 Industry Ecosystem
@@ -109,15 +119,6 @@ IndusTech---An-Industrial-Ecosystem
 
 ---
 
-## 🎯 Project Objective
-
-**IndusTech** aims to create a complete digital industrial ecosystem integrating:
-- Industrial networking
-- B2B trade & supplier discovery
-- Workforce recruitment
-- Industry collaboration
-
-...into a single unified platform.
 
 ## 🔮 Future Enhancements
 
