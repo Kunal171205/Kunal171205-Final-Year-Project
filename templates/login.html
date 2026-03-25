@@ -60,7 +60,7 @@
                     <label>Phone Number</label> 
                     <div class="input-field"> 
                         <i class="fas fa-phone-alt"></i> 
-                        <input type="tel" name="phone" placeholder="Enter your phone number"> 
+                        <input type="text" name="mail" placeholder="Enter your mail"> 
                     </div> 
                 </div>
             
@@ -87,10 +87,12 @@
                     <span>or</span>
                 </div>
 
-                <button type="button" class="btn-google">
+               
+                <a href="{{ url_for('login_google', role='worker') }}" class="btn-google">
                     <i class="fab fa-google"></i>
                     Continue with Google
-                </button>
+                 </a>
+                 
 
                 <p class="signup-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
             </form>
@@ -129,10 +131,11 @@
                     <span>or</span>
                 </div>
 
-                <button type="button" class="btn-google">
+                 
+                <a href="{{ url_for('login_google', role='company') }}" class="btn-google">
                     <i class="fab fa-google"></i>
                     Continue with Google
-                </button>
+                 </a>
 
                 <p class="signup-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
             </form>

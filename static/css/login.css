@@ -487,6 +487,7 @@ form {
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;

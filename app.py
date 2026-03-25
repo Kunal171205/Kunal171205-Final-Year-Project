@@ -1,3 +1,4 @@
+import email
 from enum import unique
 from flask import Flask, render_template, request, redirect, session, url_for , jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +13,12 @@ from database import db
 import config
 import json
 
+from authlib.integrations.flask_client import OAuth
+
+
+import secrets
+
+
 from flask import flash
 app = Flask(__name__)
 app.config.from_object(config)
@@ -19,6 +26,113 @@ db.init_app(app)
 
 from models import Worker, TradeRequest , WorkExperience, Certification, Education ,Company, JobPost, sellitem, Application  # import AFTER db.init_app
 
+oauth = OAuth(app)
+
+google = oauth.register(
+    name="google",
+    client_id=os.getenv("GOOGLE_CLIENT_ID"),
+    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+    access_token_url="https://oauth2.googleapis.com/token",
+    authorize_url="https://accounts.google.com/o/oauth2/v2/auth",
+    api_base_url="https://www.googleapis.com/oauth2/v2/",
+    client_kwargs={
+        "scope": "email profile",
+        "token_endpoint_auth_method": "client_secret_post"
+    }
+)
+
+
+
+@app.route('/login/google')
+def login_google():
+    role = request.args.get("role")   # worker or company
+    session["oauth_role"] = role
+    redirect_uri = url_for('google_callback', _external=True)
+    return google.authorize_redirect(redirect_uri)
+
+
+@app.route('/login/google/callback')
+def google_callback():
+    token = google.authorize_access_token()
+    user_info = google.get("userinfo").json()
+
+    email = user_info.get("email")
+    name = user_info.get("name")
+    google_id = user_info.get("id")
+
+    role = session.get("oauth_role")   # worker / company
+    temp_password = secrets.token_urlsafe(16)
+
+    if role == "company":
+        user = Company.query.filter_by(email=email).first()
+        if not user:
+            user = Company(
+                company_name=name,
+                email=email,
+                google_id=google_id,
+                password=temp_password,
+                is_password_set=False
+            )
+            db.session.add(user)
+            db.session.commit()
+
+        session.clear()
+        session["company_id"] = user.id
+        session["user_type"] = "company"
+
+        if not user.is_password_set:
+            return redirect(url_for("set_company_password"))
+
+        return redirect(url_for("companyprofile"))
+
+    # -------- WORKER --------
+    user = Worker.query.filter_by(email=email).first()
+    if not user:
+        user = Worker(
+            name=name,
+            email=email,
+            google_id=google_id,
+            password=temp_password,
+            is_password_set=False
+        )
+        db.session.add(user)
+        db.session.commit()
+
+    session.clear()
+    session["worker_id"] = user.id
+    session["user_type"] = "worker"
+
+    if not user.is_password_set:
+        return redirect(url_for("set_password"))
+
+    return redirect(url_for("workerprofile"))
+
+@app.route("/set-password", methods=["GET","POST"])
+def set_password():
+    if request.method == "POST":
+        pwd = request.form["password"]
+        
+        user = Worker.query.get(session["worker_id"])
+        user.password = pwd
+        user.is_password_set = True
+        db.session.commit()
+        return redirect(url_for("workerprofile"))
+    return render_template("set_password.html")
+
+@app.route("/set-company-password", methods=["GET","POST"])
+def set_company_password():
+    if "company_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+        pwd = request.form["password"]
+        company = Company.query.get(session["company_id"])
+        company.password = pwd
+        company.is_password_set = True
+        db.session.commit()
+        return redirect(url_for("companyprofile"))
+
+    return render_template("set_password.html")  # same UI can be reused
 
 @app.route("/")
 def home():
@@ -353,14 +467,14 @@ def login():
 
 @app.route("/login/worker", methods=["POST"])
 def login_worker():
-    phone = request.form.get("phone")
+    email = request.form.get("mail")
     password = request.form.get("password")
 
-    if not phone or not password:
+    if not email or not password:
         flash("All fields are required", "error")
         return redirect(url_for("login"))
 
-    worker = Worker.query.filter_by(phone_no=phone).first()
+    worker = Worker.query.filter_by(email=email).first()
 
     if not worker or worker.password != password:
         flash("Invalid phone number or password", "error")
@@ -399,7 +513,7 @@ def login_company():
 def signup_worker():
     worker = Worker(
         name=request.form["full_name"],
-        phone_no=request.form["phone"],
+        email=request.form["mail"],
         password=request.form["password"]
     )
     db.session.add(worker)

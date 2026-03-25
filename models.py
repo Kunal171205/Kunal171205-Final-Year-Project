@@ -10,19 +10,21 @@ Base = declarative_base()
 class Worker(db.Model):
     __tablename__ = "worker"
     id = db.Column(db.Integer, primary_key=True)
+    google_id = db.Column(db.String(200), nullable=True)
 
     # signup fields
     name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(128), nullable=False)
-    phone_no = db.Column(db.String(20), unique=True, nullable=False)
+    phone_no = db.Column(db.String(20), unique=True)
 
     # post-signup profile fields (✅ MUST be nullable)
-    email = db.Column(db.String(128), unique=True, nullable=True)
+    email = db.Column(db.String(128), unique=True, nullable=False)
     gender = db.Column(db.String(15), nullable=True)
     dob = db.Column(db.Date, nullable=True)
     address = db.Column(db.String(256), nullable=True)
     languages = db.Column(db.String(100), nullable=True)
 
+    is_password_set = db.Column(db.Boolean, default=True)
 
     # KYC documents
     profile_photo = db.Column(db.String(200), nullable=True)
@@ -103,6 +105,9 @@ class Company(db.Model):
     company_name = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
+    google_id = db.Column(db.String(255), nullable=True)
+    is_password_set = db.Column(db.Boolean, default=True)
+
 
     # ---------- PROFILE HEADER ----------
     company_category = db.Column(db.String(120),nullable=True)     # Manufacturing & Production

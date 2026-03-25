@@ -70,10 +70,10 @@
                 </div>
 
                 <div class="input-group"> 
-                    <label>Phone Number</label> 
+                    <label>Email </label> 
                     <div class="input-field"> 
                         <i class="fas fa-phone-alt"></i> 
-                        <input type="tel" name="phone" placeholder="Enter your phone number"> 
+                        <input type="text" name="mail" placeholder="Enter your phone number"> 
                     </div> 
                 </div>
             
@@ -84,8 +84,21 @@
                         <input type="text" name="password" placeholder="Enter your password"> 
                     </div> 
                 </div>
+
+                
             
                 <button class="btn-login-main" type="submit">Create Worker Account →</button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                 
+                <a href="{{ url_for('login_google', role='worker') }}" class="btn-google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                 </a>
+
             </form>
             
             <!--company singup-->
@@ -117,6 +130,16 @@
                 </div>
             
                 <button class="btn-login-main" type="submit">Create Worker Account →</button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                 
+                <a href="{{ url_for('login_google', role='company') }}" class="btn-google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                 </a>
             </form>
             
 
